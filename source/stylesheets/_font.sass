@@ -1,0 +1,22 @@
+@mixin font-face ($name, $source, $type: regular, $weight: normal, $style: normal)
+	font-family: $name
+	src: url(../fonts/#{$source}-#{$type}-webfont.eot)
+	src: url(../fonts/#{$source}-#{$type}-webfont.eot?#iefix) format('embedded-opentype'), url(../fonts/#{$source}-#{$type}-webfont.woff) format('woff'), url(../fonts/#{$source}-#{$type}-webfont.ttf) format('truetype'), url(../fonts/#{$source}-#{$type}-webfont.svg##{$name}) format('svg')
+	font-weight: $weight
+	font-style: $style
+@font-face
+	@include font-face(OpenSans, opensanshebrew, extrabold, bolder)
+@font-face
+	@include font-face(OpenSans, opensanshebrew, bolditalic, bold, italic)
+@font-face
+	@include font-face(OpenSans, opensanshebrew, bold, bold)
+@font-face
+	@include font-face(OpenSans, opensanshebrew, light, lighter)
+@font-face
+	@include font-face(OpenSans, opensanshebrew, italic, normal, italic)
+@font-face
+	@include font-face(OpenSans, opensanshebrew, extrabolditalic, bolder, italic)
+@font-face
+	@include font-face(OpenSans, opensanshebrew)
+@font-face
+	@include font-face(OpenSans, opensanshebrew, lightitalic, lighter, italic)
