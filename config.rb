@@ -1,7 +1,7 @@
 ## Gems ##
-require 'nokogiri'       # Scraping data
-require 'open-uri'       # Fetching external websites
-require 'slim'		     # Sexyfying HTML
+require 'nokogiri' # Scraping data
+require 'open-uri' # Fetching external websites
+require 'slim' # Sexyfying HTML
 require 'normalize-scss'
 
 ## Directories ##
@@ -18,12 +18,12 @@ helpers do
 	## Get link ##
 	def schedule_link
 		## Variables ##
-		url = "http://handasaim.co.il/"  # String: Site scraped
-		data = Nokogiri::HTML(open(url)) #         Use HTML code
-		link = "Error! No link."         #         The link + default error
-		items = data.css("marquee td *") # Array:  All news items
-		links = data.css("marquee a")    #         All links
-		xls = Array.new                  #         Only .xls links
+		url = "http://handasaim.co.il/" # Site scraped
+		data = Nokogiri::HTML(open(url)) # Use HTML code
+		link = "Error! No link."         # The link + default error
+		items = data.css("marquee td *") # All news items
+		links = data.css("marquee a")    # All links
+		xls = Array.new                  # Only .xls links
 
 		## List only .xls links ##
 		links.each do |a| # Iterate through all links
@@ -37,7 +37,7 @@ helpers do
 			link = xls[0]
 
 		## Plan B: Get the .xls link after "תועש תכרעמ" ##
-		else                  # Go to Plan B if several .xls links exist
+		else # Go to Plan B if several .xls links exist
 			items.each do |a| # Iterate through all news items
 				if a.text.include? "מערכת שעות" and xls.include? a.next["href"]
 					link = a.next["href"]
@@ -50,10 +50,10 @@ helpers do
 	## Get name ##
 	def schedule_name
 		## Variables ##
-		url = "http://handasaim.co.il//" # String: Site scraped
-		data = Nokogiri::HTML(open(url)) #         Use HTML code
-		name = "מערכת שעות"                #         The name + default value
-		items = data.css("marquee b")    # Array:  All news items
+		url = "http://handasaim.co.il//" # Site scraped
+		data = Nokogiri::HTML(open(url)) # Use HTML code
+		name = "מערכת שעות"
+		items = data.css("marquee b") # All news items
 
     	## Get name ##
 		items.each do |a| # Iterate through all news items
